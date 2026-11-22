@@ -145,6 +145,9 @@ Config::define('AUTOMATIC_UPDATER_DISABLED', true);
 Config::define('DISABLE_WP_CRON', env('DISABLE_WP_CRON') ?: false);
 
 // Disable the plugin and theme file editor in the admin
+// The TREAT theme is activated by WordPress's installer.
+Config::define('WP_DEFAULT_THEME', 'treat');
+
 Config::define('DISALLOW_FILE_EDIT', true);
 
 // Disable plugin and theme updates and installation from the admin
