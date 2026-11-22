@@ -1,0 +1,31 @@
+h1, h2, h3 {
+  font-family: var(--font-head);
+  font-weight: 400;
+  margin: 0 0 .6em;
+}
+
+h1, h2 {
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: -.01em;
+}
+
+h1 { font-size: clamp(28px, 4vw, 52px); }
+h2 { font-size: clamp(20px, 2.6vw, 34px); }
+
+.prose {
+  text-align: center;
+
+  p { margin: 0 0 1em; }
+
+  &--small { font-size: .78em; }
+  &--left { text-align: left; }
+}
+
+.eyebrow,
+.meta {
+  font-size: .8em;
+  color: var(--muted);
+  text-transform: uppercase;
+  text-align: center;
+}

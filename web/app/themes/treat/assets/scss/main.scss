@@ -1,0 +1,28 @@
+// TREAT — from PLANNING/WEB - homepage
+// Build: npm run build   Watch: npm run dev
+//
+// Load paths: assets/scss (shared) and views (component Sass lives beside its Twig).
+
+// Shared
+@use "base/root";
+@use "base/base";
+@use "base/typography";
+@use "base/utilities";
+@use "layout/section";
+@use "components/button";
+
+// Layout
+@use "layouts/base/base" as base-layout;
+
+// Partials
+@use "partials/site-header/site-header";
+@use "partials/site-footer/site-footer";
+@use "partials/hero/hero";
+@use "partials/issue-card/issue-card";
+@use "partials/post-card/post-card";
+@use "partials/tag-list/tag-list";
+@use "partials/pagination/pagination";
+@use "partials/contact-form/contact-form";
+
+// Templates
+@use "templates/single-issue/single-issue";

@@ -1,0 +1,22 @@
+@use "../abstracts" as *;
+
+%button {
+  @include label;
+  appearance: none;
+  display: inline-block;
+  min-width: 9em;
+  padding: 1.1em 2.2em 1.1em .6em;
+  border: 0;
+  background: var(--field);
+  color: var(--field-ink);
+  font-size: .75em;
+  line-height: 1;
+  text-align: left;
+  text-decoration: none;
+  box-shadow: 2px 2px 3px $shadow;
+  cursor: pointer;
+
+  &:hover { color: var(--ink); }
+}
+
+.button { @extend %button; }

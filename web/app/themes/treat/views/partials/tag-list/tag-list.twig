@@ -1,0 +1,6 @@
+{# tags: Timber terms #}
+{% if tags %}
+  <ul class="tag-list">
+    {% for tag in tags %}<li><a href="{{ tag.link }}">{{ tag.name }}</a></li>{% endfor %}
+  </ul>
+{% endif %}

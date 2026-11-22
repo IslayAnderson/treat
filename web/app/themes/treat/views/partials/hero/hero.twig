@@ -1,0 +1,14 @@
+{# hero: { issue, image, tags, show_caption } from front-page.php #}
+<section class="hero{{ hero.image ? '' : ' hero--empty' }}">
+  {% if hero.image %}
+    <img class="hero__image" src="{{ hero.image.src('treat-hero') }}" srcset="{{ hero.image.srcset }}" sizes="100vw" alt="{{ hero.image.alt }}">
+  {% endif %}
+  {% if hero.show_caption %}
+    <div class="hero__caption">
+      <a class="hero__issue" href="{{ hero.issue.link }}">{{ hero.issue.title }}</a>
+      <ul class="hero__tags">
+        {% for tag in hero.tags %}<li><a href="{{ tag.link }}">{{ tag.name }}</a></li>{% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+</section>

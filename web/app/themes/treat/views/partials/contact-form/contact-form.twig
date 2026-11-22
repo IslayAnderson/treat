@@ -1,0 +1,33 @@
+<section class="section contact" id="contact">
+  {% if contact.heading %}<h2>{{ contact.heading }}</h2>{% endif %}
+  {% if contact.intro %}<div class="prose prose--small">{{ contact.intro }}</div>{% endif %}
+
+  <form class="contact-form" method="post" action="{{ contact.action }}">
+    {% if contact.status == 'sent' %}
+      <p class="notice notice--ok" role="status">{{ contact.messages.sent }}</p>
+    {% elseif contact.status == 'invalid' %}
+      <p class="notice notice--error" role="alert">{{ contact.messages.invalid }}</p>
+    {% elseif contact.status in ['failed', 'expired'] %}
+      <p class="notice notice--error" role="alert">{{ contact.messages.failed }}</p>
+    {% endif %}
+
+    <input type="hidden" name="action" value="{{ contact.hidden }}">
+    <input type="hidden" name="_treat_nonce" value="{{ contact.nonce }}">
+    <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+    <div class="contact-form__row">
+      <label class="field"><span class="visually-hidden">{{ contact.labels.name }}</span>
+        <input type="text" name="name" placeholder="{{ contact.labels.name }}" autocomplete="name" required>
+      </label>
+      <label class="field"><span class="visually-hidden">{{ contact.labels.email }}</span>
+        <input type="email" name="email" placeholder="{{ contact.labels.email }}" autocomplete="email" required>
+      </label>
+    </div>
+    <label class="field"><span class="visually-hidden">{{ contact.labels.message }}</span>
+      <textarea name="message" rows="8" placeholder="{{ contact.labels.message }}" required></textarea>
+    </label>
+    <div class="contact-form__actions">
+      <button type="submit">{{ contact.labels.submit }}</button>
+    </div>
+  </form>
+</section>

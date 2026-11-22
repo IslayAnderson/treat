@@ -1,0 +1,9 @@
+@use "../abstracts" as *;
+
+.visually-hidden { @include visually-hidden; }
+
+// Contact form honeypot
+.hp {
+  position: absolute;
+  left: -9999px;
+}

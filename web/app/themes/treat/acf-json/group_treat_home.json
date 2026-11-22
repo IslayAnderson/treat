@@ -1,0 +1,89 @@
+{
+  "key": "group_treat_home",
+  "title": "Homepage",
+  "fields": [
+    {
+      "key": "field_treat_home_tab_hero",
+      "label": "Hero",
+      "name": "",
+      "type": "tab",
+      "placement": "top"
+    },
+    {
+      "key": "field_treat_home_hero_fallback",
+      "label": "Fallback hero image",
+      "name": "hero_fallback_image",
+      "type": "image",
+      "instructions": "Used when the latest published issue has no front page hero image, or there are no published issues yet.",
+      "return_format": "id",
+      "preview_size": "medium",
+      "library": "all",
+      "mime_types": "jpg,jpeg,png,webp,avif"
+    },
+    {
+      "key": "field_treat_home_tab_forward",
+      "label": "Forward",
+      "name": "",
+      "type": "tab",
+      "placement": "top"
+    },
+    {
+      "key": "field_treat_home_forward_heading",
+      "label": "Heading",
+      "name": "forward_heading",
+      "type": "text",
+      "default_value": "Forward"
+    },
+    {
+      "key": "field_treat_home_forward_text",
+      "label": "Text",
+      "name": "forward_text",
+      "type": "textarea",
+      "rows": 6,
+      "new_lines": "wpautop"
+    },
+    {
+      "key": "field_treat_home_tab_issues",
+      "label": "Issues",
+      "name": "",
+      "type": "tab",
+      "placement": "top"
+    },
+    {
+      "key": "field_treat_home_issues_heading",
+      "label": "Heading",
+      "name": "issues_heading",
+      "type": "text",
+      "default_value": "Issues"
+    },
+    {
+      "key": "field_treat_home_issues_count",
+      "label": "Number of issues",
+      "name": "issues_count",
+      "type": "number",
+      "default_value": 3,
+      "min": 1,
+      "max": 12
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_type",
+        "operator": "==",
+        "value": "front_page"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "acf_after_title",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": [
+    "the_content"
+  ],
+  "active": true,
+  "show_in_rest": 0,
+  "modified": 1795306988
+}

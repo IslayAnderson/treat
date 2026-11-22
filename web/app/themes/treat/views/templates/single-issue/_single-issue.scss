@@ -1,0 +1,11 @@
+.issue__cover {
+  margin: 0 auto 2em;
+  max-width: 40rem;
+
+  figcaption {
+    font-size: .75em;
+    color: var(--muted);
+    text-align: right;
+    margin-top: .4em;
+  }
+}

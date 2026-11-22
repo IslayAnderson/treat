@@ -1,0 +1,161 @@
+{
+  "key": "group_treat_contact_settings",
+  "title": "Contact form",
+  "fields": [
+    {
+      "key": "field_treat_contact_tab_delivery",
+      "label": "Delivery",
+      "name": "",
+      "type": "tab",
+      "placement": "left"
+    },
+    {
+      "key": "field_treat_contact_save",
+      "label": "Save messages",
+      "name": "contact_save_entries",
+      "type": "true_false",
+      "ui": 1,
+      "default_value": 1,
+      "instructions": "Keep every submission under Messages in the admin."
+    },
+    {
+      "key": "field_treat_contact_send",
+      "label": "Email messages",
+      "name": "contact_send_email",
+      "type": "true_false",
+      "ui": 1,
+      "default_value": 1
+    },
+    {
+      "key": "field_treat_contact_recipients",
+      "label": "Send to",
+      "name": "contact_recipients",
+      "type": "textarea",
+      "rows": 3,
+      "new_lines": "",
+      "instructions": "One email address per line. Defaults to the site admin email.",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_treat_contact_send",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
+      "key": "field_treat_contact_subject",
+      "label": "Email subject",
+      "name": "contact_subject",
+      "type": "text",
+      "default_value": "[{site}] Message from {name}",
+      "instructions": "Placeholders: {site}, {name}, {email}.",
+      "conditional_logic": [
+        [
+          {
+            "field": "field_treat_contact_send",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    {
+      "key": "field_treat_contact_tab_form",
+      "label": "Form",
+      "name": "",
+      "type": "tab",
+      "placement": "left"
+    },
+    {
+      "key": "field_treat_contact_heading",
+      "label": "Heading",
+      "name": "contact_heading",
+      "type": "text",
+      "default_value": "Stories / Interviews / Events"
+    },
+    {
+      "key": "field_treat_contact_intro",
+      "label": "Intro",
+      "name": "contact_intro",
+      "type": "textarea",
+      "rows": 4,
+      "new_lines": "wpautop",
+      "instructions": "Shown between the heading and the form."
+    },
+    {
+      "key": "field_treat_contact_name_label",
+      "label": "Name placeholder",
+      "name": "contact_name_label",
+      "type": "text",
+      "default_value": "Name"
+    },
+    {
+      "key": "field_treat_contact_email_label",
+      "label": "Email placeholder",
+      "name": "contact_email_label",
+      "type": "text",
+      "default_value": "Email"
+    },
+    {
+      "key": "field_treat_contact_message_label",
+      "label": "Message placeholder",
+      "name": "contact_message_label",
+      "type": "text",
+      "default_value": "Message"
+    },
+    {
+      "key": "field_treat_contact_submit_label",
+      "label": "Button text",
+      "name": "contact_submit_label",
+      "type": "text",
+      "default_value": "Submit"
+    },
+    {
+      "key": "field_treat_contact_tab_messages",
+      "label": "Responses",
+      "name": "",
+      "type": "tab",
+      "placement": "left"
+    },
+    {
+      "key": "field_treat_contact_thanks",
+      "label": "Sent",
+      "name": "contact_thanks",
+      "type": "text",
+      "default_value": "Thanks \u2014 we'll be in touch."
+    },
+    {
+      "key": "field_treat_contact_invalid",
+      "label": "Missing or invalid fields",
+      "name": "contact_invalid",
+      "type": "text",
+      "default_value": "Please add your name, a valid email and a message."
+    },
+    {
+      "key": "field_treat_contact_failed",
+      "label": "Couldn't send",
+      "name": "contact_failed",
+      "type": "text",
+      "default_value": "Sorry, that didn't send. Please try again."
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "treat-contact-settings"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "seamless",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "show_in_rest": 0,
+  "modified": 1795306988
+}

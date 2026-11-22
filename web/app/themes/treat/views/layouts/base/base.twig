@@ -1,0 +1,23 @@
+<!doctype html>
+<html {{ site.language_attributes }}>
+<head>
+  <meta charset="{{ site.charset }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  {{ function('wp_head') }}
+</head>
+<body class="{{ body_class }}">
+  {{ function('wp_body_open') }}
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  {% include 'partials/site-header/site-header.twig' %}
+
+  <main id="main" class="{% block main_class %}page{% endblock %}">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include 'partials/site-footer/site-footer.twig' %}
+  {{ function('wp_footer') }}
+</body>
+</html>

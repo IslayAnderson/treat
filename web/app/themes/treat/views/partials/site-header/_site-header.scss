@@ -1,0 +1,47 @@
+@use "abstracts" as *;
+
+// Vertical monogram + top-right nav, laid over the hero
+.site-header {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  pointer-events: none;
+
+  a { pointer-events: auto; }
+}
+
+.monogram {
+  position: absolute;
+  top: 0;
+  left: clamp(6px, 1.6vw, 24px);
+  width: var(--monogram);
+  color: var(--ink);
+  display: block;
+
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.site-nav {
+  ul {
+    @include bare-list;
+    padding: clamp(10px, 1.6vw, 22px) var(--gutter) 0 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: .6em;
+  }
+
+  a {
+    @include label;
+    font-size: clamp(14px, 2.2vw, 30px);
+    text-underline-offset: .15em;
+    text-decoration-thickness: 1px;
+    color: var(--ink);
+
+    &:hover,
+    &[aria-current] { text-decoration-thickness: 2px; }
+  }
+}

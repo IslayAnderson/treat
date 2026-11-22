@@ -1,0 +1,51 @@
+@use "abstracts" as *;
+
+.hero {
+  position: relative;
+  height: var(--hero-height);
+  background: var(--hero-fallback);
+  overflow: hidden;
+  color: var(--white);
+
+  &--empty { background: var(--field); }
+
+  &__image { @include cover; }
+
+  &__caption {
+    position: absolute;
+    top: 45%;
+    right: var(--gutter);
+    bottom: 0;
+    text-align: right;
+    text-transform: uppercase;
+    line-height: 1;
+    text-shadow: 0 1px 12px $shadow;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+
+      &:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: .12em;
+      }
+    }
+  }
+
+  &__issue {
+    display: block;
+    font-size: clamp(13px, 1.9vw, 26px);
+    font-weight: 300;
+  }
+
+  &__tags {
+    @include bare-list;
+    margin-top: .15em;
+
+    li {
+      font-size: clamp(20px, 3.9vw, 54px);
+      font-weight: 300;
+    }
+  }
+}

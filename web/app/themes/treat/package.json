@@ -1,0 +1,13 @@
+{
+  "name": "treat-theme",
+  "private": true,
+  "scripts": {
+    "build": "sass assets/scss/main.scss assets/dist/main.css --load-path=assets/scss --load-path=views --style=compressed --source-map --no-error-css",
+    "dev": "sass assets/scss/main.scss assets/dist/main.css --load-path=assets/scss --load-path=views --watch --source-map",
+    "texture": "node bin/texture.mjs"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "sass": "^1.108.2"
+  }
+}

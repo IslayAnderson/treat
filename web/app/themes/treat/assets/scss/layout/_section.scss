@@ -1,0 +1,11 @@
+@use "../abstracts" as *;
+
+.section {
+  max-width: calc(var(--measure) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: clamp(28px, 5vw, 72px) var(--gutter) 0;
+  // Keep clear of the monogram until there's room beside the column
+  padding-left: max(var(--gutter), calc(var(--monogram) + 28px));
+
+  @include up(lg) { padding-left: var(--gutter); }
+}

@@ -1,0 +1,17 @@
+@use "../abstracts" as *;
+
+:root {
+  @each $name, $value in $colors {
+    --#{$name}: #{$value};
+  }
+
+  --font-head: #{$font-head};
+  --font-body: #{$font-body};
+
+  --gutter: clamp(16px, 4vw, 48px);
+  --measure: #{$measure};
+
+  // Logo width, capped so the hero (which is sized from it) fits the screen.
+  --monogram: clamp(34px, min(6.5vw, calc(100svh / #{$hero-ratio})), 88px);
+  --hero-height: calc(var(--monogram) * #{$hero-ratio});
+}

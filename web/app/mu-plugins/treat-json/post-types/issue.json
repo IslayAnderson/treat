@@ -1,0 +1,21 @@
+{
+  "slug": "issue",
+  "labels": {
+    "name": "Issues",
+    "singular_name": "Issue",
+    "add_new_item": "Add New Issue",
+    "edit_item": "Edit Issue",
+    "all_items": "All Issues",
+    "view_item": "View Issue",
+    "search_items": "Search Issues",
+    "not_found": "No issues found"
+  },
+  "public": true,
+  "has_archive": "issues",
+  "rewrite": { "slug": "issues", "with_front": false },
+  "menu_icon": "dashicons-book-alt",
+  "menu_position": 5,
+  "show_in_rest": true,
+  "supports": ["title", "editor", "thumbnail", "excerpt", "page-attributes", "revisions"],
+  "taxonomies": ["post_tag"]
+}

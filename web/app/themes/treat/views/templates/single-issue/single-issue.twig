@@ -1,0 +1,31 @@
+{% extends 'layouts/base/base.twig' %}
+
+{% block content %}
+  {% set cover = post.meta('cover_image') ? get_image(post.meta('cover_image')) : post.thumbnail %}
+  <article class="section issue">
+    <header class="issue__header">
+      <h1>{{ post.title }}</h1>
+      {% if post.meta('published_on') %}<p class="meta">{{ post.meta('published_on') }}</p>{% endif %}
+    </header>
+    {% if cover %}
+      <figure class="issue__cover">
+        <img src="{{ cover.src('large') }}" srcset="{{ cover.srcset }}" sizes="(min-width: 60rem) 40rem, 100vw" alt="{{ cover.alt }}">
+        {% if post.meta('cover_caption') %}<figcaption>{{ post.meta('cover_caption') }}</figcaption>{% endif %}
+      </figure>
+    {% endif %}
+    {% if post.meta('forward') %}
+      <section class="prose"><h2>Forward</h2>{{ post.meta('forward') }}</section>
+    {% endif %}
+    <div class="prose">{{ post.content }}</div>
+    {% set tags = post.terms({ taxonomy: 'post_tag', orderby: 'term_order' }) %}
+    {% include 'partials/tag-list/tag-list.twig' %}
+    {% if post.meta('issue_pdf') %}<p><a class="button" href="{{ post.meta('issue_pdf').url }}">Download PDF</a></p>{% endif %}
+  </article>
+
+  {% if issue_posts|length %}
+    <section class="section">
+      <h2>In this issue</h2>
+      <div class="post-list">{% for item in issue_posts %}{% include 'partials/post-card/post-card.twig' %}{% endfor %}</div>
+    </section>
+  {% endif %}
+{% endblock %}

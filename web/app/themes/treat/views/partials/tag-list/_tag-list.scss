@@ -1,0 +1,11 @@
+@use "abstracts" as *;
+
+.tag-list {
+  @include bare-list;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5em 1em;
+  justify-content: center;
+  margin-block: 1em;
+  text-transform: uppercase;
+}

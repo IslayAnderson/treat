@@ -1,0 +1,21 @@
+{% extends 'layouts/base/base.twig' %}
+
+{% block content %}
+  <section class="section">
+    <h1>{{ title ?: function('get_the_archive_title') }}</h1>
+    {% if posts|length %}
+      {# Tag archives can mix issues and posts: issues as a grid first, then posts. #}
+      {% set issues = posts|filter(p => p.post_type == 'issue') %}
+      {% set others = posts|filter(p => p.post_type != 'issue') %}
+      {% if issues|length %}
+        <div class="issue-grid">{% for issue in issues %}{% include 'partials/issue-card/issue-card.twig' %}{% endfor %}</div>
+      {% endif %}
+      {% if others|length %}
+        <div class="post-list">{% for item in others %}{% include 'partials/post-card/post-card.twig' %}{% endfor %}</div>
+      {% endif %}
+      {% include 'partials/pagination/pagination.twig' with { pagination: posts.pagination } %}
+    {% else %}
+      <p class="prose">Nothing here yet.</p>
+    {% endif %}
+  </section>
+{% endblock %}

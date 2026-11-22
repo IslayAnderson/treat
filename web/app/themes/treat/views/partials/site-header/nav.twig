@@ -1,0 +1,13 @@
+<nav class="site-nav" aria-label="Primary">
+  <ul>
+    {% if menu and menu.items %}
+      {% for item in menu.items %}
+        <li class="{{ item.classes|join(' ') }}"><a href="{{ item.link }}"{% if item.current %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+      {% endfor %}
+    {% else %}
+      {% for item in fallback_menu %}
+        <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+      {% endfor %}
+    {% endif %}
+  </ul>
+</nav>

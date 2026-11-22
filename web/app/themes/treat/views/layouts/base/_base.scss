@@ -1,0 +1,15 @@
+@use "abstracts" as *;
+
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  background: var(--paper);
+  padding: 8px 12px;
+
+  &:not(:focus) { @include visually-hidden; }
+}
+
+// Pages without a hero need room for the nav
+main:not(.home) { padding-top: clamp(64px, 9vw, 120px); }

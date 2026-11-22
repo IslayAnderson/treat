@@ -1,0 +1,42 @@
+@use "abstracts" as *;
+
+.issue-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(12px, 4vw, 40px);
+
+  @include down(xs) { grid-template-columns: 1fr 1fr; }
+}
+
+.issue-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 118 / 166;
+  background: var(--field);
+  color: var(--ink);
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform .2s ease;
+
+  &:hover { transform: translateY(-4px); }
+
+  @include reduced-motion { transition: none; }
+
+  img { @include cover; }
+
+  &__title {
+    position: relative;
+    margin: 0;
+    padding: .4em .35em;
+    text-align: right;
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: clamp(14px, 2.4vw, 32px);
+    line-height: 1.1;
+  }
+
+  &.has-cover &__title {
+    color: var(--white);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, .4);
+  }
+}

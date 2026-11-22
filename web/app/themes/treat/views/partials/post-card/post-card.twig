@@ -1,0 +1,8 @@
+{# item: Timber post #}
+<article class="post-card">
+  {% set category = item.category %}
+  {% if category and category.slug != 'uncategorized' %}<p class="eyebrow">{{ category.name }}</p>{% endif %}
+  <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
+  {% if item.meta('event_date') %}<p class="meta">{{ item.meta('event_date') }}{% if item.meta('event_location') %} · {{ item.meta('event_location') }}{% endif %}</p>{% endif %}
+  <p>{{ item.excerpt({ words: 30, read_more: false }) }}</p>
+</article>

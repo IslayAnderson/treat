@@ -1,0 +1,82 @@
+{
+  "key": "group_treat_issue",
+  "title": "Issue details",
+  "fields": [
+    {
+      "key": "field_treat_issue_number",
+      "label": "Issue number",
+      "name": "issue_number",
+      "type": "number",
+      "min": 1,
+      "required": 1
+    },
+    {
+      "key": "field_treat_issue_cover",
+      "label": "Cover image",
+      "name": "cover_image",
+      "type": "image",
+      "return_format": "id",
+      "preview_size": "medium",
+      "library": "all"
+    },
+    {
+      "key": "field_treat_issue_caption",
+      "label": "Cover caption",
+      "name": "cover_caption",
+      "type": "text"
+    },
+    {
+      "key": "field_treat_issue_hero_image",
+      "label": "Front page hero image",
+      "name": "hero_image",
+      "type": "image",
+      "instructions": "Shown full-width at the top of the homepage while this is the latest published issue. Falls back to the cover image.",
+      "return_format": "id",
+      "preview_size": "medium",
+      "library": "all",
+      "mime_types": "jpg,jpeg,png,webp,avif"
+    },
+    {
+      "key": "field_treat_issue_forward",
+      "label": "Forward",
+      "name": "forward",
+      "type": "wysiwyg",
+      "tabs": "all",
+      "toolbar": "basic",
+      "media_upload": 0
+    },
+    {
+      "key": "field_treat_issue_pdf",
+      "label": "PDF",
+      "name": "issue_pdf",
+      "type": "file",
+      "return_format": "array",
+      "mime_types": "pdf"
+    },
+    {
+      "key": "field_treat_issue_published",
+      "label": "Publication date",
+      "name": "published_on",
+      "type": "date_picker",
+      "display_format": "F Y",
+      "return_format": "F Y"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "issue"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "show_in_rest": 1,
+  "modified": 1795306315
+}

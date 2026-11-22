@@ -1,0 +1,39 @@
+@use "sass:map";
+@use "sass:math";
+
+// Colours — emitted as CSS custom properties in base/_root.scss
+$colors: (
+  "ink": #000,
+  "paper": #f8f8f8,   // off-white page; baked into paper.webp, so run `npm run texture` after changing
+  "white": #fff,      // text on photos
+  "muted": #666,
+  "field": rgba(0, 0, 0, .07),   // neutral, translucent so the paper shows through
+  "field-ink": #8a8a8a,
+  "rule": #d6d6d6,
+  "hero-fallback": #8c8aa0,
+  "ok": #eef3ea,
+  "error": #f6e8e6,
+);
+
+$font-head: "Inter Tight", "Inter", system-ui, sans-serif;
+$font-body: "Roboto Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+$measure: 46rem;
+
+// Tileable paper texture: paper.svg is the source, paper.webp the 2× render the
+// site uses (npm run texture). Path is relative to assets/dist/main.css.
+$paper-texture: url("../img/paper.webp");
+$paper-texture-size: 360px;
+
+$breakpoints: (
+  "xs": 26rem,
+  "lg": 64rem,
+);
+
+// Vertical logo (treat-logo-vertical.svg, viewBox 125 × 2000).
+// The hero stops in the gap between the A (ends 1611.5) and final T (starts 1622.5).
+$logo-aspect: math.div(2000, 125);     // height ÷ width
+$logo-at-gap: math.div(1617, 2000);    // gap position along the logo
+$hero-ratio: $logo-aspect * $logo-at-gap; // hero height ÷ logo width ≈ 12.936
+
+$shadow: rgba(0, 0, 0, .35);
