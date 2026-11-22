@@ -30,13 +30,13 @@
     "issues": "https://github.com/roots/bedrock/issues",
     "forum": "https://discourse.roots.io/category/bedrock"
   },
-  "repositories": {
-    "0": {
+  "repositories": [
+    {
       "name": "wp-packages",
       "type": "composer",
       "url": "https://repo.wp-packages.org"
     }
-  },
+  ],
   "require": {
     "php": ">=8.3",
     "composer/installers": "^2.0",
