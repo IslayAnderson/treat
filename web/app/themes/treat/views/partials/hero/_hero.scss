@@ -2,6 +2,7 @@
 
 .hero {
   position: relative;
+  aspect-ratio: 1;
   height: var(--hero-height);
   background: var(--hero-fallback);
   overflow: hidden;

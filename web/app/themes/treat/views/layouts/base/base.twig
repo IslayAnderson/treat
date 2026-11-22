@@ -11,13 +11,15 @@
   {{ function('wp_body_open') }}
   <a class="skip-link" href="#main">Skip to content</a>
 
-  {% include 'partials/site-header/site-header.twig' %}
+  <div class="site">
+    {% include 'partials/site-header/site-header.twig' %}
 
-  <main id="main" class="{% block main_class %}page{% endblock %}">
-    {% block content %}{% endblock %}
-  </main>
+    <main id="main" class="{% block main_class %}page{% endblock %}">
+      {% block content %}{% endblock %}
+    </main>
 
-  {% include 'partials/site-footer/site-footer.twig' %}
+    {% include 'partials/site-footer/site-footer.twig' %}
+  </div>
   {{ function('wp_footer') }}
 </body>
 </html>

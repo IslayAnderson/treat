@@ -13,3 +13,12 @@
 
 // Pages without a hero need room for the nav
 main:not(.home) { padding-top: clamp(64px, 9vw, 120px); }
+
+// Wraps header, main and footer (not the WP admin bar, which wp_footer prints after it).
+// - position: the vertical logo is placed against the page, so the admin bar's
+//   32px push moves the logo and the hero together.
+// - container: gives the hero and logo an exact page width (cqw) to size from.
+.site {
+  position: relative;
+  container-type: inline-size;
+}

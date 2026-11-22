@@ -11,7 +11,9 @@
   --gutter: clamp(16px, 4vw, 48px);
   --measure: #{$measure};
 
-  // Logo width, capped so the hero (which is sized from it) fits the screen.
-  --monogram: clamp(34px, min(6.5vw, calc(100svh / #{$hero-ratio})), 88px);
-  --hero-height: calc(var(--monogram) * #{$hero-ratio});
+  // The hero is square (as wide as the page), and the logo is sized from it so the
+  // hero's bottom edge always lands in the gap between the logo's A and T.
+  // cqw = width of .site (the page, excluding any scrollbar); see layouts/base.
+  --hero-height: 100cqw;
+  --monogram: calc(var(--hero-height) / #{$hero-ratio});
 }
