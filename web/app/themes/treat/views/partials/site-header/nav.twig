@@ -2,7 +2,9 @@
   <ul>
     {% if menu and menu.items %}
       {% for item in menu.items %}
-        <li class="{{ item.classes|join(' ') }}"><a href="{{ item.link }}"{% if item.current %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+        {# WordPress ignores the #fragment, so an anchor link like /#contact would count as the current page #}
+        {% set current = item.current and '#' not in item.link %}
+        <li class="{{ item.classes|join(' ') }}"><a href="{{ item.link }}"{% if current %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
       {% endfor %}
     {% else %}
       {% for item in fallback_menu %}

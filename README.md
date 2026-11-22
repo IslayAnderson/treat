@@ -14,6 +14,7 @@ WordPress site for TREAT magazine, built with Bedrock (Composer), Timber 2 (Twig
 | `web/app/themes/treat/assets/scss/` | Shared Sass: tokens and mixins (`abstracts/`), base, the `.section` layout, the button placeholder, and `main.scss`, which pulls everything together |
 | `web/app/themes/treat/assets/dist/` | Compiled CSS that WordPress loads |
 | `scripts/seed.php` | Local demo content |
+| `scripts/setup-menu.php` | Creates the Primary menu (Issues, About, Contact) on an existing site. Fresh installs get it automatically. Edit it under Appearance → Menus |
 
 A theme can add more JSON definitions in `{theme}/json/post-types` and `{theme}/json/taxonomies`. Rewrite rules flush automatically when any JSON definition changes.
 
