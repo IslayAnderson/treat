@@ -17,6 +17,7 @@ class Site extends TimberSite
         add_filter('timber/twig', [$this, 'twig']);
         add_filter('register_taxonomy_args', [$this, 'sortTags'], 10, 2);
         add_action('pre_get_posts', [$this, 'tagArchives']);
+        add_filter('wp_get_nav_menu_items', [$this, 'hideUnpublishedMenuItems']);
 
         parent::__construct();
     }
@@ -40,6 +41,20 @@ class Site extends TimberSite
         if (! is_admin() && $query->is_main_query() && $query->is_tag()) {
             $query->set('post_type', ['post', 'issue']);
         }
+    }
+
+    /**
+     * Menu items for drafts, private or scheduled pages would be dead links for
+     * visitors, so leave them out of menus on the front end until they're published.
+     */
+    public function hideUnpublishedMenuItems(array $items): array
+    {
+        if (is_admin()) {
+            return $items;
+        }
+
+        return array_values(array_filter($items, fn ($item) => $item->type !== 'post_type'
+            || get_post_status((int) $item->object_id) === 'publish'));
     }
 
     public function setup(): void

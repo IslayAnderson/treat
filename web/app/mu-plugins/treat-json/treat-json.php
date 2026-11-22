@@ -87,7 +87,29 @@ add_filter('acf/settings/load_json', function (array $paths) {
 });
 
 /**
- * Flush rewrite rules when the JSON definitions change (dev convenience).
+ * Whether a JSON post type's archive has no rewrite rule, e.g. because rules were
+ * last flushed (by core or a plugin) before it was registered.
+ */
+function missing_archive_rules(): bool
+{
+    $rules = get_option('rewrite_rules');
+    if (! get_option('permalink_structure') || ! is_array($rules)) {
+        return false; // plain permalinks, or WordPress rebuilds them on the next request anyway
+    }
+
+    foreach (get_post_types(['_builtin' => false, 'has_archive' => true], 'objects') as $type) {
+        $slug = $type->has_archive === true ? ($type->rewrite['slug'] ?? $type->name) : $type->has_archive;
+        if (! isset($rules[trim($slug, '/') . '/?$'])) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Flush rewrite rules when the JSON definitions change (dev convenience), or when a
+ * post type archive's rule has gone missing.
  */
 add_action('init', function () {
     $hash = '';
@@ -100,7 +122,7 @@ add_action('init', function () {
     }
     $hash = md5($hash);
 
-    if (get_option('treat_json_hash') !== $hash) {
+    if (get_option('treat_json_hash') !== $hash || missing_archive_rules()) {
         flush_rewrite_rules(false);
         update_option('treat_json_hash', $hash);
     }
