@@ -10,10 +10,10 @@
   </section>
 
   {% if posts|length %}
-    <section class="section issues" id="posts">
+    <section class="section posts" id="posts">
       <h2>{{ post.meta('posts_heading') ?: 'Posts' }}</h2>
-      <div class="issue-grid">
-        {% for post in posts %}{% include 'partials/issue-card/issue-card.twig' %}{% endfor %}
+      <div class="post-list">
+        {% for item in posts %}{% include 'partials/post-card/post-card.twig' %}{% endfor %}
       </div>
     </section>
   {% endif %}

@@ -32,14 +32,15 @@ $context['hero'] = [
 
 $context['issues'] = Timber::get_posts([
     'post_type' => 'issue',
-    'posts_per_page' => 3,
+    'posts_per_page' => (int) ($home->meta('issues_count') ?: 3),
     'orderby' => ['menu_order' => 'ASC', 'date' => 'ASC'],
 ]);
 
+// Posts have no manual order: newest first.
 $context['posts'] = Timber::get_posts([
     'post_type' => 'post',
-    'posts_per_page' => 3,
-    'orderby' => ['menu_order' => 'ASC', 'date' => 'ASC'],
+    'posts_per_page' => (int) ($home->meta('posts_count') ?: 3),
+    'ignore_sticky_posts' => true,
 ]);
 
 Timber::render('templates/front-page/front-page.twig', $context);
