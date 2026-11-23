@@ -21,6 +21,28 @@
       "mime_types": "jpg,jpeg,png,webp,avif"
     },
     {
+      "key": "field_treat_home_logo_type",
+      "label": "Logo type",
+      "name": "logo_type",
+      "type": "button_group",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "dark": "Dark",
+        "light": "Light"
+      },
+      "default_value": "dark",
+      "return_format": "value",
+      "allow_null": 0,
+      "layout": "horizontal"
+    },
+    {
       "key": "field_treat_home_tab_forward",
       "label": "Forward",
       "name": "",

@@ -34,6 +34,7 @@ $breakpoints: (
 // The hero stops in the gap between the A (ends 1611.5) and final T (starts 1622.5).
 $logo-aspect: math.div(2000, 125);     // height ÷ width
 $logo-at-gap: math.div(1617, 2000);    // gap position along the logo
-$hero-ratio: $logo-aspect * $logo-at-gap; // hero height ÷ logo width ≈ 12.936
+//$hero-ratio: $logo-aspect * $logo-at-gap; // hero height ÷ logo width ≈ 12.936
+$hero-ratio: $logo-aspect; // hero height ÷ logo width ≈ 12.936
 
 $shadow: rgba(0, 0, 0, .35);

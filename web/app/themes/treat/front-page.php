@@ -28,6 +28,7 @@ $context['hero'] = [
     'tags' => $hero_tags,
     // The caption (title + tags) shows only when both are present.
     'show_caption' => $hero_title !== '' && ! empty($hero_tags),
+    'logo_type' => $home->meta('logo_type'),
 ];
 
 $context['issues'] = Timber::get_posts([
