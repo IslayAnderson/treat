@@ -21,16 +21,29 @@ A theme can add more JSON definitions in `{theme}/json/post-types` and `{theme}/
 
 ## Local setup
 
+Local development runs on [Laravel Valet](https://laravel.com/docs/valet), at https://treatmag.test. Valet's built-in Bedrock driver serves `web/`, so link the project root, not `web/`.
+
+One-off Valet install (needs Homebrew PHP and MySQL; `valet install` asks for your password):
+
+```bash
+composer global require laravel/valet
+export PATH="$HOME/.composer/vendor/bin:$PATH"   # add to ~/.zshrc
+valet install
+sudo brew services start php   # if treatmag.test gives a 502: PHP-FPM isn't running
+```
+
+Then, from the project root:
+
 ```bash
 composer install
-cp .env.example .env   # set DB_* and WP_HOME, generate salts
-vendor/bin/wp core install --url=http://localhost:8080 --title=TREAT --admin_user=admin --admin_email=you@example.com
-vendor/bin/wp theme activate treat
-vendor/bin/wp plugin activate advanced-custom-fields
-vendor/bin/wp rewrite structure '/%postname%/'
+cp .env.example .env     # set DB_*, WP_HOME='https://treatmag.test', generate salts
+valet link treatmag      # serves this folder at treatmag.test
+valet secure treatmag    # HTTPS with a local certificate
+vendor/bin/wp core install --url=https://treatmag.test --title=TREAT --admin_user=admin --admin_email=you@example.com
 vendor/bin/wp eval-file scripts/seed.php path/to/cover.png   # optional demo content
-vendor/bin/wp server --host=localhost --port=8080
 ```
+
+A fresh install sets the theme, `/%postname%/` permalinks, the Home page and the Primary menu itself (see `treat-install.php`). Valet runs in the background, so there's no server to start. Use the project's `vendor/bin/wp`, not a global `wp`: Homebrew's WP-CLI clashes with the WP-CLI packages Bedrock loads (`search-replace` crashes with an undefined method). Moving an existing database to this URL: `vendor/bin/wp search-replace http://localhost:8080 https://treatmag.test --all-tables`. Without Valet, `vendor/bin/wp server --host=localhost --port=8080` works too, with `WP_HOME='http://localhost:8080'`.
 
 ### Views
 
