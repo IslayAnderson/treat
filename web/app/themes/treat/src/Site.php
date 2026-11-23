@@ -38,7 +38,7 @@ class Site extends TimberSite
     /** Tags are shared by posts and issues, so tag archives list both. */
     public function tagArchives(\WP_Query $query): void
     {
-        if (! is_admin() && $query->is_main_query() && $query->is_tag()) {
+        if (!is_admin() && $query->is_main_query() && $query->is_tag()) {
             $query->set('post_type', ['post', 'issue']);
         }
     }
@@ -53,8 +53,8 @@ class Site extends TimberSite
             return $items;
         }
 
-        return array_values(array_filter($items, fn ($item) => $item->type !== 'post_type'
-            || get_post_status((int) $item->object_id) === 'publish'));
+        return array_values(array_filter($items, fn($item) => $item->type !== 'post_type'
+            || get_post_status((int)$item->object_id) === 'publish'));
     }
 
     public function setup(): void
@@ -87,7 +87,7 @@ class Site extends TimberSite
             'treat',
             get_theme_file_uri('assets/dist/main.css'),
             ['treat-fonts'],
-            file_exists($css) ? (string) filemtime($css) : $version
+            file_exists($css) ? (string)filemtime($css) : $version
         );
     }
 
@@ -115,6 +115,13 @@ class Site extends TimberSite
 
             return file_exists($file) ? file_get_contents($file) : '';
         }, ['is_safe' => ['html']]));
+
+
+        // truncate by word
+        $twig->addFunction(new TwigFunction('truncate_by_word', function (string $string, int $value) {
+            $split_string = explode(' ', $string);
+            return join(' ', array_slice($split_string, 0, $value < count($split_string) ? $value : count($split_string)));
+        }));
 
         return $twig;
     }

@@ -1,18 +1,36 @@
 {% extends 'layouts/base/base.twig' %}
 
 {% block content %}
-  <article class="section entry">
-    {% set category = post.category %}
-    {% if category and category.slug != 'uncategorized' %}<p class="eyebrow"><a href="{{ category.link }}">{{ category.name }}</a></p>{% endif %}
-    <h1>{{ post.title }}</h1>
-    <p class="meta">
-      {{ post.meta('byline') ?: post.author.name }} · {{ post.date }}
-      {% if post.meta('event_date') %}<br>{{ post.meta('event_date') }}{% if post.meta('event_location') %} · {{ post.meta('event_location') }}{% endif %}{% endif %}
-    </p>
-    {% if post.thumbnail %}<figure><img src="{{ post.thumbnail.src('large') }}" alt="{{ post.thumbnail.alt }}"></figure>{% endif %}
-    <div class="prose prose--left">{{ post.content }}</div>
-    {% set issue_id = post.meta('related_issue') %}
-    {% if issue_id %}{% set issue = get_post(issue_id) %}<p class="meta">From <a href="{{ issue.link }}">{{ issue.title }}</a></p>{% endif %}
-    {% include 'partials/tag-list/tag-list.twig' with { tags: post.tags } %}
-  </article>
+    <article class="section entry">
+        {% set category = post.category %}
+        {% if category and category.slug != 'uncategorized' %}
+            <p class="eyebrow"><a href="{{ category.link }}">{{ category.name }}</a></p>
+        {% endif %}
+        <h1>{{ post.title }}</h1>
+        <p class="meta">
+            {{ post.meta('byline') ?: post.author.name }} {{ post.date }}
+            {% if post.meta('event_date') %}
+                <br>
+                {{ post.meta('event_date') }}
+
+                {% if post.meta('event_location') %}
+                    {{ post.meta('event_location') }}
+                {% endif %}
+              
+            {% endif %}
+        </p>
+        {% if post.meta('cover_image') %}
+            <figure><img src="{{ get_image(post.meta('cover_image')).src('large') }}"
+                         alt="{{ get_image(post.meta('cover_image')).alt }}"></figure>
+        {% elseif post.thumbnail %}
+            <figure><img src="{{ post.thumbnail.src('large') }}" alt="{{ post.thumbnail.alt }}"></figure>
+        {% endif %}
+        <div class="prose prose--left">{{ post.content }}</div>
+        {% set issue_id = post.meta('related_issue') %}
+        {% if issue_id %}
+            {% set issue = get_post(issue_id) %}
+            <p class="meta">From <a href="{{ issue.link }}">{{ issue.title }}</a></p>
+        {% endif %}
+        {% include 'partials/tag-list/tag-list.twig' with { tags: post.tags } %}
+    </article>
 {% endblock %}

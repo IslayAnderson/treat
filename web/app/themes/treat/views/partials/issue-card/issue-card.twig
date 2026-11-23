@@ -1,7 +1,7 @@
 {% set cover = issue.meta('cover_image') ? get_image(issue.meta('cover_image')) : issue.thumbnail %}
 <a class="issue-card{{ cover ? ' has-cover' }}" href="{{ issue.link }}">
-  {% if cover %}
-    <img src="{{ cover.src('treat-card') }}" alt="{{ cover.alt }}" loading="lazy">
-  {% endif %}
-  <h3 class="issue-card__title">{{ issue.title|e|replace({' ': '<br>'})|raw }}</h3>
+    {% if cover %}
+        <img src="{{ cover.src('treat-card') }}" alt="{{ cover.alt }}" loading="lazy">
+    {% endif %}
+    <h3 class="issue-card__title">{{ truncate_by_word(issue.title, 7) }}</h3>
 </a>
