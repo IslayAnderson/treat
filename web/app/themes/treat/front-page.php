@@ -32,7 +32,13 @@ $context['hero'] = [
 
 $context['issues'] = Timber::get_posts([
     'post_type' => 'issue',
-    'posts_per_page' => (int) ($home->meta('issues_count') ?: 3),
+    'posts_per_page' => 3,
+    'orderby' => ['menu_order' => 'ASC', 'date' => 'ASC'],
+]);
+
+$context['posts'] = Timber::get_posts([
+    'post_type' => 'post',
+    'posts_per_page' => 3,
     'orderby' => ['menu_order' => 'ASC', 'date' => 'ASC'],
 ]);
 

@@ -65,6 +65,29 @@
       "min": 1,
       "max": 12
     }
+    {
+      "key": "field_treat_home_tab_posts",
+      "label": "Posts",
+      "name": "",
+      "type": "tab",
+      "placement": "top"
+    },
+    {
+      "key": "field_treat_home_posts_heading",
+      "label": "Heading",
+      "name": "posts_heading",
+      "type": "text",
+      "default_value": "Posts"
+    },
+    {
+      "key": "field_treat_home_posts_count",
+      "label": "Number of posts",
+      "name": "posts_count",
+      "type": "number",
+      "default_value": 3,
+      "min": 1,
+      "max": 12
+    }
   ],
   "location": [
     [

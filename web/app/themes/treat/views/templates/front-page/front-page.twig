@@ -9,6 +9,15 @@
     <div class="prose">{{ post.meta('forward_text') }}</div>
   </section>
 
+  {% if posts|length %}
+    <section class="section issues" id="posts">
+      <h2>{{ post.meta('posts_heading') ?: 'Posts' }}</h2>
+      <div class="issue-grid">
+        {% for post in posts %}{% include 'partials/issue-card/issue-card.twig' %}{% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
   {% if issues|length %}
     <section class="section issues" id="issues">
       <h2>{{ post.meta('issues_heading') ?: 'Issues' }}</h2>
