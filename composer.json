@@ -50,6 +50,11 @@
     "wp-plugin/advanced-custom-fields": "^6.8",
     "wp-theme/twentytwentyfive": "^1.0"
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
   "require-dev": {
     "laravel/pint": "^1.0",
     "pestphp/pest": "^4.0",

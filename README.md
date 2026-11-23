@@ -13,6 +13,7 @@ WordPress site for TREAT magazine, built with Bedrock (Composer), Timber 2 (Twig
 | `web/app/themes/treat/views/` | Twig, one folder per piece, each holding its own Sass (see below) |
 | `web/app/themes/treat/assets/scss/` | Shared Sass: tokens and mixins (`abstracts/`), base, the `.section` layout, the button placeholder, and `main.scss`, which pulls everything together |
 | `web/app/themes/treat/assets/dist/` | Compiled CSS that WordPress loads |
+| `tests/` | Pest integration tests (see Tests below) |
 | `scripts/seed.php` | Local demo content |
 | `scripts/setup-menu.php` | Creates the Primary menu (Issues, About, Contact) on an existing site. Fresh installs get it automatically. Edit it under Appearance → Menus |
 
@@ -55,6 +56,23 @@ npm run texture # re-render the paper background (needs cwebp: brew install webp
 The page background is `assets/img/paper.webp`, a 2× tile rendered from `assets/img/paper.svg` (noise filters) onto the `paper` colour in `abstracts/_tokens.scss`. Run `npm run texture` after changing either. It's an image rather than the SVG itself because Safari and Firefox don't reliably render SVG noise filters as CSS backgrounds.
 
 The compiled `assets/dist/main.css` is what WordPress loads, so rebuild before deploying (or commit the build).
+
+## Tests
+
+```bash
+composer test
+```
+
+The tests run against a real WordPress install in a separate database, `treat_test` (set in `phpunit.xml.dist`). The bootstrap won't run unless the name ends in `_test`. Create the database once, with the same user as `.env`:
+
+```sql
+CREATE DATABASE treat_test;
+GRANT ALL ON treat_test.* TO 'treat'@'localhost';
+```
+
+The first run installs WordPress there. Each test runs in a transaction that is rolled back afterwards, and hooks, request globals and caches are reset, so tests don't affect each other. `tests/TestCase.php` has helpers for code that redirects and exits (`redirectFrom`), for catching mail (`captureMail`) and for admin screens (`inAdmin`).
+
+They cover the JSON loader (definitions, post types, rewrite self-heal, ACF paths), install defaults and the Primary menu, the classic editor switch, the theme's `Site` class (tags, tag archives, menus, the nav template, `svg()`), and the contact form, its settings and the Messages screen. Page templates such as `front-page.php` aren't covered.
 
 ## Content model
 

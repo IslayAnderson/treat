@@ -96,13 +96,13 @@ class Site extends TimberSite
         $context['site'] = $this;
         $context['menu'] = Timber::get_menu('primary');
 
-        // Used when no "primary" menu has been assigned yet.
+        // Used when no "primary" menu has been assigned yet. About only once it's published.
         $about = get_page_by_path('about');
-        $context['fallback_menu'] = [
+        $context['fallback_menu'] = array_values(array_filter([
             ['title' => 'Issues', 'url' => get_post_type_archive_link('issue') ?: home_url('/issues/')],
-            ['title' => 'About', 'url' => $about ? get_permalink($about) : home_url('/about/')],
+            $about && $about->post_status === 'publish' ? ['title' => 'About', 'url' => get_permalink($about)] : null,
             ['title' => 'Contact', 'url' => home_url('/#contact')],
-        ];
+        ]));
 
         return $context;
     }
