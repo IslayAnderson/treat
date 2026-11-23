@@ -1,4 +1,8 @@
 <header class="site-header">
-  <a class="monogram" href="{{ site.url }}" aria-label="{{ site.name }} home">{{ svg('treat-logo-vertical') }}</a>
+  {% if hero.logo_type == 'light' %}
+    <a class="monogram" href="{{ site.url }}" aria-label="{{ site.name }} home">{{ svg('treat-logo-vertical-light') }}</a>
+  {% else %}
+    <a class="monogram" href="{{ site.url }}" aria-label="{{ site.name }} home">{{ svg('treat-logo-vertical') }}</a>
+  {% endif %}
   {% include 'partials/site-header/nav.twig' %}
 </header>
